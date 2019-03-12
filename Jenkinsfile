@@ -8,6 +8,13 @@ pipeline {
   agent any
     stages 
     {
+        stage('Unit Test') {
+      steps{
+        script {
+          sh 'python tests.py'
+        }
+      }
+    }  
         stage('Building image') {
       steps{
         script {
