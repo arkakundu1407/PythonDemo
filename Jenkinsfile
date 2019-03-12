@@ -77,11 +77,11 @@ pipeline {
          sh '/usr/local/lynis/lynis audit system'
       }
     }
-    stage('Remove Unused docker image') {
+   /* stage('Remove Unused docker image') {
       steps{
         sh "docker rmi -f $registry:$BUILD_NUMBER"
       }
-    }
+    }*/
 stage ('Deploy application') {
        steps {
            kubernetesDeploy(
