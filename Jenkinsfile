@@ -71,6 +71,7 @@ pipeline {
       steps {
          
         sh 'git clone https://github.com/CISOfy/lynis'
+         sh 'rm -rf /usr/local/lynis'
         sh 'mv lynis /usr/local/'
          sh 'chown -R root:root /usr/local/lynis'
          sh '/usr/local/lynis/lynis audit system'
