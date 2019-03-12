@@ -15,7 +15,7 @@ pipeline {
         }
       }
     }  
-        stage('Building image') {
+       /* stage('Building image') {
       steps{
         script {
           //will pisck registry from variable defined
@@ -52,7 +52,7 @@ pipeline {
   -Dsonar.login=af8120918acf2a231c35e9d7c2e7317b3f82156e"
          
           }
-       }
+       }*/
       /*stage('Cleanup') {
       when {
                 not { environment ignoreCase: true, name: 'containerId', value: '' }
@@ -64,7 +64,7 @@ pipeline {
     }*/
        
        
-             
+    /*         
     stage('Server Hardening') {
       steps {
          
@@ -74,11 +74,11 @@ pipeline {
          sh '/usr/local/lynis/lynis audit system'
       }
     }
-    /*stage('Remove Unused docker image') {
+    stage('Remove Unused docker image') {
       steps{
         sh "docker rmi -f $registry:$BUILD_NUMBER"
       }
-    }*/
+    }
 stage ('Deploy application') {
        steps {
            kubernetesDeploy(
@@ -87,7 +87,7 @@ stage ('Deploy application') {
                enableConfigSubstitution : false
            )
        }
-     }
+     }*/
 
  }
 }
