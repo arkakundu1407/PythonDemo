@@ -74,7 +74,7 @@ pipeline {
          sh 'rm -rf /usr/local/lynis'
         sh 'mv lynis /usr/local/'
          sh 'chown -R root:root /usr/local/lynis'
-         sh '/usr/local/lynis/lynis audit system'
+         sh '/usr/local/lynis/lynis audit system > /var/jenkins_home/workspace/webapp-python-project/hardening-output.html'
       }
     }
    /* stage('Remove Unused docker image') {
