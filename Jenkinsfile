@@ -51,7 +51,7 @@ pipeline {
      
            stage('Aqua MicroScanner') {
         steps{
-       aquaMicroscanner imageName:'arkakundu1407/docker-pipeline:$BUILD_NUMBER', notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
+       aquaMicroscanner imageName:'arkakundu1407/docker-pipeline:'$BUILD_NUMBER, notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
        
         }
     } 
