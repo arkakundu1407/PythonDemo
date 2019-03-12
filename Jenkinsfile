@@ -8,40 +8,13 @@ pipeline {
   agent any
     stages 
     {
-        stage('Unit Test') {
+        /*stage('Unit Test') {
       steps{
         script {
           sh 'python tests.py'
         }
       }
-    }  
-       /* stage('Building image') {
-      steps{
-        script {
-          //will pisck registry from variable defined
-          //dockerImage = docker.build registry + ":$BUILD_NUMBER"
-           dockerImage = docker.build registry
-        }
-      }
-    }
-     
-       stage('Push Image') {
-      steps{
-         script {
-            docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
-          }
-        }
-      }
-    }
-     
-       stage('Aqua MicroScanner') {
-        steps{
-       aquaMicroscanner imageName:'arkakundu1407/docker-pipeline:latest', notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
-       
-        }
-    }
-       
+    } */ 
        stage("Sonar scanner"){
           steps{
        
@@ -52,7 +25,36 @@ pipeline {
   -Dsonar.login=af8120918acf2a231c35e9d7c2e7317b3f82156e"
          
           }
-       }*/
+       }
+     stage('Building image') {
+      steps{
+        script {
+          //will pisck registry from variable defined
+          //dockerImage = docker.build registry + ":$BUILD_NUMBER"
+           dockerImage = docker.build registry
+        }
+      }
+    }
+
+       
+       stage('Push Image') {
+      steps{
+         script {
+            docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+          }
+        }
+      }
+    }
+     
+           stage('Aqua MicroScanner') {
+        steps{
+       aquaMicroscanner imageName:'arkakundu1407/docker-pipeline:latest', notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
+       
+        }
+    } 
+       
+       
       /*stage('Cleanup') {
       when {
                 not { environment ignoreCase: true, name: 'containerId', value: '' }
@@ -64,7 +66,7 @@ pipeline {
     }*/
        
        
-    /*         
+           
     stage('Server Hardening') {
       steps {
          
@@ -87,7 +89,7 @@ stage ('Deploy application') {
                enableConfigSubstitution : false
            )
        }
-     }*/
+     }
 
  }
 }
