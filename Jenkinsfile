@@ -39,7 +39,7 @@ pipeline {
     }
 
        
-      /* stage('Push Image') {
+      stage('Push Image') {
       steps{
          script {
             docker.withRegistry( '', registryCredential ) {
@@ -51,11 +51,11 @@ pipeline {
      
            stage('Aqua MicroScanner') {
         steps{
-       aquaMicroscanner imageName:'arkakundu1407/docker-pipeline:latest', notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
+       aquaMicroscanner imageName:'arkakundu1407/docker-pipeline:$BUILD_NUMBER', notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
        
         }
     } 
-       */
+       
        
       /*stage('Cleanup') {
       when {
@@ -84,7 +84,7 @@ pipeline {
         sh "docker rmi -f $registry:$BUILD_NUMBER"
       }
     }*/
-/*stage ('Deploy application') {
+stage ('Deploy application') {
        steps {
            kubernetesDeploy(
                kubeconfigId : 'kubeconfig',
@@ -92,7 +92,7 @@ pipeline {
                enableConfigSubstitution : false
            )
        }
-     }*/
+     }
 
  }
 }
