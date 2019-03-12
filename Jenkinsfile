@@ -14,7 +14,7 @@ pipeline {
           sh 'python tests.py'
         }
       }
-    } */ 
+    } 
        stage("Sonar scanner"){
           steps{
        
@@ -25,19 +25,20 @@ pipeline {
   -Dsonar.login=af8120918acf2a231c35e9d7c2e7317b3f82156e"
          
           }
-       }
+       }*/
      stage('Building image') {
       steps{
         script {
           //will pisck registry from variable defined
           //dockerImage = docker.build registry + ":$BUILD_NUMBER"
            dockerImage = docker.build registry
+           sh 'echo $BUILD_NUMBER'
         }
       }
     }
 
        
-       stage('Push Image') {
+      /* stage('Push Image') {
       steps{
          script {
             docker.withRegistry( '', registryCredential ) {
@@ -53,7 +54,7 @@ pipeline {
        
         }
     } 
-       
+       */
        
       /*stage('Cleanup') {
       when {
@@ -67,7 +68,7 @@ pipeline {
        
        
            
-    stage('Server Hardening') {
+  /*  stage('Server Hardening') {
       steps {
          
         sh 'git clone https://github.com/CISOfy/lynis'
@@ -76,13 +77,13 @@ pipeline {
          sh 'chown -R root:root /usr/local/lynis'
          sh '/usr/local/lynis/lynis audit system > /var/jenkins_home/workspace/webapp-python-project/hardening-output.html'
       }
-    }
+    }*/
    /* stage('Remove Unused docker image') {
       steps{
         sh "docker rmi -f $registry:$BUILD_NUMBER"
       }
     }*/
-stage ('Deploy application') {
+/*stage ('Deploy application') {
        steps {
            kubernetesDeploy(
                kubeconfigId : 'kubeconfig',
@@ -90,7 +91,7 @@ stage ('Deploy application') {
                enableConfigSubstitution : false
            )
        }
-     }
+     }*/
 
  }
 }
