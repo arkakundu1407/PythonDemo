@@ -30,9 +30,9 @@ pipeline {
       steps{
         script {
           //will pisck registry from variable defined
-          //dockerImage = docker.build registry + ":$BUILD_NUMBER"
-           dockerImage = docker.build registry
-           sh 'echo $BUILD_NUMBER'
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+          // dockerImage = docker.build registry
+           sh 'sed "s/latest/$BUILD_NUMBER/g" Application.yml'
         }
       }
     }
