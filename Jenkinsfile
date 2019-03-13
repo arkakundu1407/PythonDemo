@@ -32,9 +32,7 @@ pipeline {
         script {
           //will pisck registry from variable defined
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
-           println $dockerImage
-           sh 'echo "docker image variable $(dockerImage)"'
-           //dockerImage = docker.build registry
+          //dockerImage = docker.build registry
            sh 'sed "s/latest/$BUILD_NUMBER/g" Application.yml > Application1.yml'
            sh 'mv Application1.yml Application.yml'
         }
