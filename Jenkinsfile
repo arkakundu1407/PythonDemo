@@ -69,16 +69,16 @@ pipeline {
        
        
            
-  /*  stage('Server Hardening') {
+    stage('Server Hardening') {
       steps {
          
         sh 'git clone https://github.com/CISOfy/lynis'
          sh 'rm -rf /usr/local/lynis'
         sh 'mv lynis /usr/local/'
          sh 'chown -R root:root /usr/local/lynis'
-         sh '/usr/local/lynis/lynis audit system > /var/jenkins_home/workspace/webapp-python-project/hardening-output.html'
+         sh '/usr/local/lynis/lynis audit system > /var/jenkins_home/workspace/webapp-python-project/hardening-output.txt'
       }
-    }*/
+    }
    /* stage('Remove Unused docker image') {
       steps{
         sh "docker rmi -f $registry:$BUILD_NUMBER"
