@@ -32,6 +32,7 @@ pipeline {
         script {
           //will pisck registry from variable defined
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
+           println $dockerImage
            sh 'echo "docker image variable $(dockerImage)"'
            //dockerImage = docker.build registry
            sh 'sed "s/latest/$BUILD_NUMBER/g" Application.yml > Application1.yml'
@@ -53,9 +54,9 @@ pipeline {
      
            stage('Docker Image Scanning') {
         steps{
-           /* def build = 'arkakundu1407/docker-pipeline' + env.BUILD_NUMBER
-           sh 'echo $build' */
-           aquaMicroscanner imageName: $(dockerImage) , notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
+           def build = 'arkakundu1407/docker-pipeline' + ${env.BUILD_NUMBER}
+           println $build
+           aquaMicroscanner imageName: ${build} , notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
            
         }
     } 
