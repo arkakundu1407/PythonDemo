@@ -97,7 +97,7 @@ stage ('Deploy application') {
      }
               stage('ARACHNI Scanning') {
          steps {
-            arachniScanner checks: '*', scope: [pageLimit: 3], url: 'http://104.211.210.105:80/posts/', userConfig: [filename: 'myConfiguration.json'], format: 'html'
+            arachniScanner checks: '*', scope: [pageLimit: 3], url: 'http://104.211.210.105:80/posts/', userConfig: [filename: 'myConfiguration.json'], format: 'json'
          }
       }
 
