@@ -15,7 +15,7 @@ pipeline {
         }
       }
     } 
-       /*stage("Sonar scanner"){
+       stage("Sonar scanner"){
           steps{
        
             sh "/opt/sonar/bin/sonar-scanner \
@@ -55,7 +55,7 @@ pipeline {
        
         }
     } 
-       */
+       
        
       /*stage('Cleanup') {
       when {
@@ -84,7 +84,7 @@ pipeline {
         sh "docker rmi -f $registry:$BUILD_NUMBER"
       }
     }*/
-/*stage ('Deploy application') {
+stage ('Deploy application') {
        steps {
            kubernetesDeploy(
                kubeconfigId : 'kubeconfig',
@@ -92,7 +92,7 @@ pipeline {
                enableConfigSubstitution : false
            )
        }
-     }*/
+     }
 
  }
 }
