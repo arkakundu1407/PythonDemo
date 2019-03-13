@@ -8,14 +8,14 @@ pipeline {
   agent any
     stages 
     {
-        /*stage('Unit Test') {
+        stage('Unit Test') {
       steps{
         script {
           sh 'python tests.py'
         }
       }
     } 
-       stage("Sonar scanner"){
+       /*stage("Sonar scanner"){
           steps{
        
             sh "/opt/sonar/bin/sonar-scanner \
@@ -25,15 +25,15 @@ pipeline {
   -Dsonar.login=af8120918acf2a231c35e9d7c2e7317b3f82156e"
          
           }
-       }*/
+       }
      stage('Building image') {
       steps{
         script {
           //will pisck registry from variable defined
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
-          // dockerImage = docker.build registry
-           sh 'sed "s/latest/$BUILD_NUMBER/g" Application.yml > Application1.yml'
-           sh 'mv Application1.yml Application.yml'
+          //dockerImage = docker.build registry + ":$BUILD_NUMBER"
+           dockerImage = docker.build registry
+           //sh 'sed "s/latest/$BUILD_NUMBER/g" Application.yml > Application1.yml'
+           //sh 'mv Application1.yml Application.yml'
         }
       }
     }
@@ -49,13 +49,13 @@ pipeline {
       }
     }
      
-           stage('Aqua MicroScanner') {
+           stage('Docker Image Scanning') {
         steps{
-           aquaMicroscanner imageName:'arkakundu1407/docker-pipeline:${BUILD_NUMBER}', notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
+           aquaMicroscanner imageName:'arkakundu1407/docker-pipeline:latest', notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
        
         }
     } 
-       
+       */
        
       /*stage('Cleanup') {
       when {
@@ -84,7 +84,7 @@ pipeline {
         sh "docker rmi -f $registry:$BUILD_NUMBER"
       }
     }*/
-stage ('Deploy application') {
+/*stage ('Deploy application') {
        steps {
            kubernetesDeploy(
                kubeconfigId : 'kubeconfig',
@@ -92,7 +92,7 @@ stage ('Deploy application') {
                enableConfigSubstitution : false
            )
        }
-     }
+     }*/
 
  }
 }
