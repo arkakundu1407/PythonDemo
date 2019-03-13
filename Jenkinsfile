@@ -17,7 +17,7 @@ pipeline {
     } 
        stage("Sonar scanner"){
           steps{
-       
+            sh 'rm -rf scanlatest.html'
             sh "/opt/sonar/bin/sonar-scanner \
   -Dsonar.projectKey=python-webapp \
   -Dsonar.sources=. \
