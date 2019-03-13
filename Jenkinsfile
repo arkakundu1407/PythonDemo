@@ -22,8 +22,8 @@ pipeline {
             sh "/opt/sonar/bin/sonar-scanner \
   -Dsonar.projectKey=python-webapp \
   -Dsonar.sources=. \
-  -Dsonar.host.url=http://13.71.84.4:9000 \
-  -Dsonar.login=6d0cd8a074c0775d0cec714b76dbb5370b5e8626"
+  -Dsonar.host.url=http://104.211.208.249:9000 \
+  -Dsonar.login=65e9c19ce16f518f1c778442ae3f390ed76dd1ef"
          
           }
        }
