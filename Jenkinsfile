@@ -50,13 +50,13 @@ pipeline {
       }
     }
      
-         /*  stage('Docker Image Scanning') {
+         stage('Docker Image Scanning') {
         steps{
            
            aquaMicroscanner imageName:'arkakundu1407/docker-pipeline:latest' , notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
            
         }
-    } */
+    } 
        
        
       /*stage('Cleanup') {
