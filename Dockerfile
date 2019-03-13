@@ -16,7 +16,7 @@ RUN apt-get update && apt-get -y install ca-certificates
 ADD https://get.aquasec.com/microscanner /
 RUN chmod +x /microscanner
 ARG token
-RUN /microscanner ${ZjhkZmMwMTM2Zjk2}
+RUN /microscanner ${OWIzMTA5NTYwMmE0}
 RUN echo "No vulnerabilities!"
  
 # Install any needed packages specified in requirements.txt
