@@ -16,7 +16,7 @@ pipeline {
         }
       }
     } 
-       stage("Sonar scanner"){
+       stage("Code Scanning"){
           steps{
             sh 'rm -rf scanlatest.html'
             sh "/opt/sonar/bin/sonar-scanner \
@@ -40,7 +40,7 @@ pipeline {
     }
 
        
-      stage('Push Image') {
+      stage('Pushing Image to DockerHub') {
       steps{
          script {
             docker.withRegistry( '', registryCredential ) {
@@ -95,9 +95,9 @@ stage ('Deploy application') {
            )
        }
      }
-              stage('ARACHNI Scanning') {
+              stage('Web Application Security Scanning') {
          steps {
-            arachniScanner checks: '*', scope: [pageLimit: 3], url: 'http://13.71.114.235:80/posts/', userConfig: [filename: 'myConfiguration.json'], format: 'json'
+            arachniScanner checks: '*', scope: [pageLimit: 3], url: 'http://13.71.114.235:80/posts/', userConfig: [filename: 'myConfiguration.json'], format: 'text'
          }
       }
 
