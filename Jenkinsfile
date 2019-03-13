@@ -55,7 +55,7 @@ buildnum = "$BUILD_NUMBER"
         steps{
            var = 'arkakundu1407/docker-pipeline' + ":$BUILD_NUMBER"
            sh 'echo $(var)'
-           aquaMicroscanner imageName: ${var} , notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
+           aquaMicroscanner imageName: $(var) , notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
            
         }
     } 
