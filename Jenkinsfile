@@ -54,10 +54,11 @@ pipeline {
      
            stage('Docker Image Scanning') {
         steps{
+           script{
            def build = 'arkakundu1407/docker-pipeline' + ${env.BUILD_NUMBER}
            println $build
            aquaMicroscanner imageName: ${build} , notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
-           
+           }
         }
     } 
        
