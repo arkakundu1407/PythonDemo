@@ -4,7 +4,7 @@ pipeline {
     registryCredential = 'dockerhub'
     dockerImage = ''
     containerId = sh(script: 'docker ps -aqf "name=java-app"', returnStdout: true) //to store your container id , so that it can be deleted
-   buildnum = $BUILD_NUMBER
+   
   }
   agent any
     stages 
@@ -53,9 +53,9 @@ pipeline {
      
            stage('Docker Image Scanning') {
         steps{
-           def build = 'arkakundu1407/docker-pipeline' + env.BUILD_NUMBER
-           sh 'echo $build'
-           aquaMicroscanner imageName: $(build) , notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
+           /* def build = 'arkakundu1407/docker-pipeline' + env.BUILD_NUMBER
+           sh 'echo $build' */
+           aquaMicroscanner imageName: $(dockerImage) , notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
            
         }
     } 
