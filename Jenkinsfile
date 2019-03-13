@@ -11,7 +11,7 @@ pipeline {
         stage('Unit Test') {
       steps{
         script {
-          sh 'python tests.py'
+          sh 'python /var/jenkins_home/workspace/webapp-python-project/posts/tests.py'
         }
       }
     } 
