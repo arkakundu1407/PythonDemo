@@ -52,7 +52,7 @@ pipeline {
            stage('Docker Image Scanning') {
         steps{
            aquaMicroscanner imageName:'arkakundu1407/docker-pipeline:latest', notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
-       
+           aquaMicroscanner imageName:'mydeveloperplanet/mykubernetesplanet:0.0.2-SNAPSHOT', notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
         }
     } 
        
