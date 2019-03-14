@@ -81,6 +81,7 @@ pipeline {
         sh 'mv lynis /usr/local/'
          sh 'chown -R root:root /usr/local/lynis'
          sh '/usr/local/lynis/lynis audit system > /var/jenkins_home/workspace/webapp-python-project/hardening-output.txt'
+         step([$class: 'ArtifactArchiver', artifacts: 'hardening-output.txt'])
       }
     }
    /* stage('Remove Unused docker image') {
@@ -99,7 +100,11 @@ stage ('Deploying Application to AKS Cluster') {
      }
               stage('Arachni Security Scanner') {
          steps {
-            arachniScanner checks: '*', scope: [pageLimit: 3], url: 'http://13.71.114.235:80/posts/', userConfig: [filename: 'myConfiguration.json'], format: 'json'
+             sh "rm arachni-report.json" 
+            sh "rm arachni-report-json.zip"
+            arachniScanner checks: '*', scope: [pageLimit: 3], url: 'http://13.71.114.235:80/posts/', userConfig: [filename: 'myConfiguration.json'], format: 'json'            
+            sh "unzip arachni-report-json.zip arachni-report.json"
+            step([$class: 'ArtifactArchiver', artifacts: 'arachni-report.json'])
          }
       }
 
