@@ -14,6 +14,7 @@ pipeline {
         script {
           sh 'python /var/jenkins_home/workspace/webapp-python-project/posts/tests.py'
         }
+         
       }
     } 
        stage("Code Scanning"){
