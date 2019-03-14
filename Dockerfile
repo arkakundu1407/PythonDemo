@@ -9,7 +9,6 @@ COPY djangoproject /app/djangoproject
 COPY posts	 /app/posts
 COPY manage.py /app
 COPY requirements.txt /app
-COPY posts/views.py /app/posts
 
 
 RUN apt-get update && apt-get -y install ca-certificates
