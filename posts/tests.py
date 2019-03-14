@@ -4,7 +4,6 @@ print("Execution of  Tests Started")
 
 import unittest 
 import time
-import views
 
 time.sleep(2)
 
@@ -54,15 +53,7 @@ class TestCalc(unittest.TestCase):
            print("Ok")
            time.sleep(1)
            self.assertEqual(a,5)
-          
-      def test_multiply2(self):
-           print("Checking function  in File views.py")
-           a=views.add(115,6)
-           time.sleep(2)
-           print("Ok")
-           time.sleep(1)
-
-           self.assertEqual(a,121) 
+           
       
 
 
