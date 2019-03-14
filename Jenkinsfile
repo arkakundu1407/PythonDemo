@@ -23,8 +23,8 @@ pipeline {
             sh "/opt/sonar/bin/sonar-scanner \
   -Dsonar.projectKey=webapp-python \
   -Dsonar.sources=. \
-  -Dsonar.host.url=http://13.71.124.63:9000 \
-  -Dsonar.login=583082ab43fded8cd20d40829556b50fdcaf577c"
+  -Dsonar.host.url=http://13.71.84.138:9000 \
+  -Dsonar.login=874439216ca48df33aaddfb5b7e1b06219329746"
          
              //error('Pipeline failed due to SonarQube quality test failures')
           }
@@ -80,8 +80,8 @@ pipeline {
          sh 'rm -rf /usr/local/lynis'
         sh 'mv lynis /usr/local/'
          sh 'chown -R root:root /usr/local/lynis'
-         sh '/usr/local/lynis/lynis audit system > /var/jenkins_home/workspace/webapp-python-project/hardening-output.html'
-         step([$class: 'ArtifactArchiver', artifacts: 'hardening-output.html'])
+         sh '/usr/local/lynis/lynis audit system > /var/jenkins_home/workspace/webapp-python-project/hardening-output.txt'
+         step([$class: 'ArtifactArchiver', artifacts: 'hardening-output.txt'])
       }
     }
    /* stage('Remove Unused docker image') {
