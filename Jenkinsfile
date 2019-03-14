@@ -100,8 +100,7 @@ stage ('Deploying Application to AKS Cluster') {
      }
               stage('Arachni Security Scanner') {
          steps {
-             sh "rm arachni-report.json" 
-            sh "rm arachni-report-json.zip"
+             
             arachniScanner checks: '*', scope: [pageLimit: 3], url: 'http://13.71.114.235:80/posts/', userConfig: [filename: 'myConfiguration.json'], format: 'json'            
             sh "unzip arachni-report-json.zip arachni-report.json"
             step([$class: 'ArtifactArchiver', artifacts: 'arachni-report.json'])
