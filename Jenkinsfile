@@ -51,7 +51,7 @@ pipeline {
         }
       }
     }
-     
+ 
          stage('Aqua Security Image Scanner') {
         steps{
            
