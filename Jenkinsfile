@@ -52,7 +52,7 @@ pipeline {
       }
     }
  
-         stage('Aqua Security Image Scanner') {
+        stage('Aqua Security Image Scanner') {
         steps{
            
            aquaMicroscanner imageName:'arkakundu1407/docker-pipeline:latest' , notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
