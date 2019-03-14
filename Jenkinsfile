@@ -17,7 +17,7 @@ pipeline {
          
       }
     } 
-      /* stage("SonarQube Code Analysis"){
+      stage("SonarQube Code Analysis"){
           steps{
            sh 'rm -rf scanlatest.html'
             sh "/opt/sonar/bin/sonar-scanner \
@@ -28,7 +28,7 @@ pipeline {
          
              //error('Pipeline failed due to SonarQube quality test failures')
           }
-       }*/
+       }
      stage('Building image') {
       steps{
         script {
