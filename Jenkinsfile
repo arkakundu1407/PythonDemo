@@ -19,14 +19,14 @@ pipeline {
     } 
        stage("Code Scanning"){
           steps{
-            //sh 'rm -rf scanlatest.html'
+           // sh 'rm -rf scanlatest.html'
             sh "/opt/sonar/bin/sonar-scanner \
   -Dsonar.projectKey=python-webapp \
   -Dsonar.sources=. \
   -Dsonar.host.url=http://52.172.33.104:9000 \
   -Dsonar.login=3c8d3d9d1ba8f980df0430dd64734725fe182e30"
          
-             error('Pipeline failed due to SonarQube quality test failures')
+             //error('Pipeline failed due to SonarQube quality test failures')
           }
        }
      stage('Building image') {
