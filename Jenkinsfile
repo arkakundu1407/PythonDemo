@@ -25,6 +25,7 @@ pipeline {
   -Dsonar.host.url=http://104.211.208.249:9000 \
   -Dsonar.login=65e9c19ce16f518f1c778442ae3f390ed76dd1ef"
          
+             error('Pipeline failed due to SonarQube quality test failures')
           }
        }
      stage('Building image') {
