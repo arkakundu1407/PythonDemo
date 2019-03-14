@@ -62,27 +62,19 @@ document.getElementById("Default3").innerHTML  = sessionStorage.field3 ;
 
 }
 
-function add()
-{
-return(5+6)
-}
-
-
   </script>
 
 <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
   <div class="w3-display-topleft w3-padding-large w3-xlarge">
-
-   <img  style="height:100px; width:200px" src="https://upload.wikimedia.org/wikipedia/en/thumb/b/b1/Tata_Consultancy_Services_Logo.svg/1280px-Tata_Consultancy_Services_Logo.svg.png" class="ui medium image"/>
-
+    <img  style="height:100px; width:200px" src="https://upload.wikimedia.org/wikipedia/en/thumb/b/b1/Tata_Consultancy_Services_Logo.svg/1280px-Tata_Consultancy_Services_Logo.svg.png" class="ui medium image"/>
 
   </div>
 
   <div class="w3-display-middle" >
-   <button type="button" id="buton" style="position:relative;top:80px; height:50px; width:400px" class="btn btn-lg btn-danger" onclick="openform()">Click to toggle Form</button>
+   <button type="button" id="buton" style="position:relative;top:80px; height:50px; width:300px" class="btn btn-lg btn-danger" onclick="openform()">Click to toggle Form</button>
 
    <div class="container" id="form" style="display:none ;border: 4px double black;position:relative;left:400px;width:400px;height:500px">
-   <h2>Employee Details</h2>
+   <h2>Employee Form</h2>
    <form action="/action_page.php">
      <div class="form-group">
        <label for="email">Firstname:</label>
@@ -96,7 +88,7 @@ return(5+6)
        <label for="email">Email:</label>
        <input type="email" class="form-control" id="Email" placeholder="Enter Email" name="email">
      </div>
-     <div class="checkbox">
+     <div class="container checkbox">
        <label><input type="checkbox" name="remember"> Remember me</label>
      </div>
      <button type="button" class="btn btn-lg btn-success" onclick="opentable()">Submit</button>
@@ -105,7 +97,7 @@ return(5+6)
  </div>
 
  <div class="container" id="table" style="display:none ;border: 4px double black;background-color:olive;position:relative;left:40px;width:600px;height:">
-   <h2>Table Of Contents</h2>
+   <h2>Table Content</h2>
    <table class="table">
      <thead>
        <tr>
@@ -121,46 +113,39 @@ return(5+6)
          <td id="Default3">def@somemail.com</td>
        </tr>
        <tr class="success">
-         <td>Kaustav</td>
-         <td>Sanyal</td>
-         <td>kaustav.sanyal@tcs.com</td>
+         <td>Success</td>
+         <td>Doe</td>
+         <td>john@example.com</td>
        </tr>
        <tr class="danger">
-         <td>Nitul</td>
-         <td>Talukdar</td>
-         <td>nitul.talukdar@tcs.com</td>
+         <td>Danger</td>
+         <td>Moe</td>
+         <td>mary@example.com</td>
        </tr>
        <tr class="info">
-         <td>Rinkita</td>
-         <td>Dey</td>
-         <td>rinkita.dey@tcs.com</td>
+         <td>Info</td>
+         <td>Dooley</td>
+         <td>july@example.com</td>
        </tr>
        <tr class="warning">
-         <td>Vinnay</td>
-         <td>Kumar Bp</td>
-         <td>vinnay.kumarbp@tcs.com</td>
+         <td>Warning</td>
+         <td>Refs</td>
+         <td>bo@example.com</td>
        </tr>
        <tr class="active">
-         <td>Javed</td>
-         <td>Miyandad</td>
-         <td>javed.miyandad@tcs.com</td>
+         <td>Active</td>
+         <td>Activeson</td>
+         <td>act@example.com</td>
        </tr>
-       <tr class="active">
-         <td>Arka</td>
-         <td>Kundu</td>
-         <td>arka.kundu@tcs.com</td>
-       </tr>
-
      </tbody>
    </table>
  </div>
 
   </div>
   <div class="w3-display-bottomleft w3-padding-large">
-    Designed By <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" style="color:orange; font-size:25px ">Team Alfa</a>
+    Designed By <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" style="color:orange; font-size:25px ">Team Alpha</a>
   </div>
 </div>
 
 </body>
 </html>
-
