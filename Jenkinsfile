@@ -17,7 +17,7 @@ pipeline {
          
       }
     } 
-       stage("SonarQube Code Analysis"){
+      /* stage("SonarQube Code Analysis"){
           steps{
            sh 'rm -rf scanlatest.html'
             sh "/opt/sonar/bin/sonar-scanner \
@@ -28,7 +28,7 @@ pipeline {
          
              //error('Pipeline failed due to SonarQube quality test failures')
           }
-       }
+       }*/
      stage('Building image') {
       steps{
         script {
@@ -52,13 +52,13 @@ pipeline {
       }
     }
  
-        stage('Aqua Security Image Scanner') {
+       /* stage('Aqua Security Image Scanner') {
         steps{
            
            aquaMicroscanner imageName:'arkakundu1407/docker-pipeline:latest' , notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
            
         }
-    } 
+    } */
        
        
       /*stage('Cleanup') {
@@ -73,7 +73,7 @@ pipeline {
        
        
            
-    stage('Lynis Server Hardening') {
+    /*stage('Lynis Server Hardening') {
       steps {
          
         sh 'git clone https://github.com/CISOfy/lynis'
@@ -83,7 +83,7 @@ pipeline {
          sh '/usr/local/lynis/lynis audit system > /var/jenkins_home/workspace/webapp-python-project/hardening-output.txt'
          step([$class: 'ArtifactArchiver', artifacts: 'hardening-output.txt'])
       }
-    }
+    */
    /* stage('Remove Unused docker image') {
       steps{
         sh "docker rmi -f $registry:$BUILD_NUMBER"
@@ -98,14 +98,14 @@ stage ('Deploying Application to AKS Cluster') {
            )
        }
      }
-              stage('Arachni Security Scanner') {
+              /*stage('Arachni Security Scanner') {
          steps {
              
             arachniScanner checks: '*', scope: [pageLimit: 3], url: 'http://13.71.114.235:80/posts/', userConfig: [filename: 'myConfiguration.json'], format: 'json'            
             sh "unzip arachni-report-json.zip arachni-report.json"
             step([$class: 'ArtifactArchiver', artifacts: 'arachni-report.json'])
          }
-      }
+      }*/
 
  }
 }
