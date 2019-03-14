@@ -9,7 +9,7 @@ pipeline {
   agent any
     stages 
     {
-        stage('Unit Test') {
+        stage('Unit Testing') {
       steps{
         script { 
           sh 'python /var/jenkins_home/workspace/webapp-python-project/posts/tests.py'
@@ -17,14 +17,14 @@ pipeline {
          
       }
     } 
-       stage("Code Scanning"){
+       stage("SonarQube Code Analysis"){
           steps{
            sh 'rm -rf scanlatest.html'
             sh "/opt/sonar/bin/sonar-scanner \
-  -Dsonar.projectKey=python-webapp \
+  -Dsonar.projectKey=webapp-python \
   -Dsonar.sources=. \
-  -Dsonar.host.url=http://13.71.126.162:9000 \
-  -Dsonar.login=7b9a60dfb1641a887c1a98425292911c000978ae"
+  -Dsonar.host.url=http://13.71.124.63:9000 \
+  -Dsonar.login=583082ab43fded8cd20d40829556b50fdcaf577c"
          
              //error('Pipeline failed due to SonarQube quality test failures')
           }
@@ -52,7 +52,7 @@ pipeline {
       }
     }
      
-         stage('Docker Image Scanning') {
+         stage('Aqua Security Image Scanner') {
         steps{
            
            aquaMicroscanner imageName:'arkakundu1407/docker-pipeline:latest' , notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
@@ -73,7 +73,7 @@ pipeline {
        
        
            
-    stage('Server Hardening') {
+    stage('Lynis Server Hardening') {
       steps {
          
         sh 'git clone https://github.com/CISOfy/lynis'
@@ -88,7 +88,7 @@ pipeline {
         sh "docker rmi -f $registry:$BUILD_NUMBER"
       }
     }*/
-stage ('Deploy application') {
+stage ('Deploying Application to AKS Cluster') {
        steps {
            kubernetesDeploy(
                kubeconfigId : 'kubeconfig',
@@ -97,7 +97,7 @@ stage ('Deploy application') {
            )
        }
      }
-              stage('Web Application Security Scanning') {
+              stage('Arachni Security Scanner') {
          steps {
             arachniScanner checks: '*', scope: [pageLimit: 3], url: 'http://13.71.114.235:80/posts/', userConfig: [filename: 'myConfiguration.json'], format: 'json'
          }
