@@ -22,8 +22,8 @@ pipeline {
             sh "/opt/sonar/bin/sonar-scanner \
   -Dsonar.projectKey=python-webapp \
   -Dsonar.sources=. \
-  -Dsonar.host.url=http://104.211.208.249:9000 \
-  -Dsonar.login=65e9c19ce16f518f1c778442ae3f390ed76dd1ef"
+  -Dsonar.host.url=http://52.172.33.104:9000 \
+  -Dsonar.login=3c8d3d9d1ba8f980df0430dd64734725fe182e30"
          
              error('Pipeline failed due to SonarQube quality test failures')
           }
